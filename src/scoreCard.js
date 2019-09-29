@@ -7,14 +7,20 @@ var ScoreCard = function() {
 
 ScoreCard.prototype.getScore = function(pinsDown) {
   
+  function isSpare(i) {
+    return (pinsDown[i] + pinsDown[i+1] === 10)
+  }
+
+  function isStrike(i) {
+    return (pinsDown[i] === 10)
+  }
+
   var i = 0;
   for (var j=0; j<this._numFrames; j++) {
-    // add bonus for spares
-    if (pinsDown[i] + pinsDown[i+1] === 10) {
-      this._score += (10 + pinsDown[i+2]);
+    if (isSpare(i)) {
+      applySpareBonus();
       i += 2;
-    // add bonus for strikes
-    } else if (pinsDown[i] === 10) {
+    } else if (isStrike(i)) {
       this._score += (10 + pinsDown[i+1] + pinsDown[i+2]);
       i += 1;
     } else {
