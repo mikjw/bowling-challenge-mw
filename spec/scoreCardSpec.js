@@ -45,4 +45,22 @@ describe("ScoreCard", function() {
 
     expect(scoreCard.getScore(pinsDown)).toEqual(30);
   })
+
+  it("scores 39 with two strikes in final frame", function() {
+    var pinsDown = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,10,10,1];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(39);
+  })
+
+  it("scores 48 with three strikes in final frame", function() {
+    var pinsDown = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,10,10,10];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(48);
+  })
+
+  it("scores 29 with spare in final frame", function() {
+    var pinsDown = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,9,1];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(29);
+  })
 });
