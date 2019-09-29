@@ -28,13 +28,7 @@ describe("ScoreCard", function() {
     expect(scoreCard.getScore(pinsDown)).toEqual(38);
   })
 
-  it("scores 38 with spares in 1st and 5th", function() {
-    var pinsDown = [1,9,1,1,1,1,1,1,9,1,1,1,1,1,1,1,1,1,1,1];
-
-    expect(scoreCard.getScore(pinsDown)).toEqual(38);
-  })
-
-  it("scores 30 with strike in 1st frame", function() {
+  it("scores 30 with strike in 1st", function() {
     var pinsDown = [10,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 
     expect(scoreCard.getScore(pinsDown)).toEqual(30);
@@ -44,5 +38,11 @@ describe("ScoreCard", function() {
     var pinsDown = [10,1,1,1,1,1,1,10,1,1,1,1,1,1,1,1,1,1];
 
     expect(scoreCard.getScore(pinsDown)).toEqual(40);
+  })
+
+  it("scores 30 with a strike in final frame", function() {
+    var pinsDown = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,10,1,1];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(30);
   })
 });
