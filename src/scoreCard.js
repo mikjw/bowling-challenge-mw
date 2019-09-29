@@ -18,7 +18,7 @@ ScoreCard.prototype.getScore = function(pinsDown) {
   var i = 0;
   for (var j=0; j<this._numFrames; j++) {
     if (isSpare(i)) {
-      applySpareBonus();
+      this._score += (10 + pinsDown[i+2]);
       i += 2;
     } else if (isStrike(i)) {
       this._score += (10 + pinsDown[i+1] + pinsDown[i+2]);
