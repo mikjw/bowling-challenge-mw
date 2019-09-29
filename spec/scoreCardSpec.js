@@ -28,4 +28,21 @@ describe("ScoreCard", function() {
     expect(scoreCard.getScore(pinsDown)).toEqual(38);
   })
 
+  it("scores 38 with spares in 1st and 5th", function() {
+    var pinsDown = [1,9,1,1,1,1,1,1,9,1,1,1,1,1,1,1,1,1,1,1];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(38);
+  })
+
+  it("scores 30 with strike in 1st frame", function() {
+    var pinsDown = [10,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(30);
+  })
+
+  it("scores 40 with strikes in 1st and 5th", function() {
+    var pinsDown = [10,1,1,1,1,1,1,10,1,1,1,1,1,1,1,1,1,1];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(40);
+  })
 });
