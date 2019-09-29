@@ -2,12 +2,13 @@
 
 var ScoreCard = function() {
   this._score = 0;
+  this._numFrames = 10;
 }
 
 ScoreCard.prototype.getScore = function(pinsDown) {
   
   var i = 0;
-  for (var j=0; j<10; j++) {
+  for (var j=0; j<this._numFrames; j++) {
     // add bonus for spares
     if (pinsDown[i] + pinsDown[i+1] === 10) {
       this._score += (10 + pinsDown[i+2]);
