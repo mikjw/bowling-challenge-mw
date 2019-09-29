@@ -5,16 +5,20 @@ describe("ScoreCard", function() {
   })
 
   it("scores 0 for gutter game", function() {
-    for (i=0; i<20; i++) {
-      scoreCard.addThrow(0);
-    }
-    expect(scoreCard.getScore()).toEqual(0);
+    var pinsDown = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(0);
   })
 
   it("scores 20 for game of ones", function() {
-    for (i=0; i<20; i++) {
-      scoreCard.addThrow(1);
-    }
-    expect(scoreCard.getScore()).toEqual(20);
+    var pinsDown = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(20);
+  })
+
+  it("scores 29 with spare in first frame", function() {
+    var pinsDown = [1,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+
+    expect(scoreCard.getScore(pinsDown)).toEqual(29);
   })
 });

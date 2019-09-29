@@ -2,19 +2,18 @@
 
 var ScoreCard = function() {
   this._score = 0;
-  this._throws = [];
-  this._throwNumber = 0;
 }
 
-ScoreCard.prototype.addThrow = function(pinsDown) {
-  this._throws.push(pinsDown);
-  this._score = this._throws.reduce(summer);
-  
-  function summer(total, num) {
-    return total + num;
+ScoreCard.prototype.getScore = function(pinsDown) {
+  var i = 0;
+  for (var j=0; j<10; j++) {
+    if (pinsDown[i] + pinsDown[i+1] === 10) {
+      this._score += (10 + pinsDown[i+2]);
+      i += 2;
+    } else {
+      this._score += (pinsDown[i] + pinsDown[i+1]);
+      i += 2;
+    }
   }
-}
-
-ScoreCard.prototype.getScore = function() {
   return this._score;
 }
